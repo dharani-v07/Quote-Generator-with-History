@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote History</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .history-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .history-list {
+            list-style: none;
+        }
+
+        .history-item {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            transition: background 0.3s ease;
+        }
+
+        .history-item:hover {
+            background: #f8f8f8;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-quote {
+            font-style: italic;
+            color: #333;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .history-author {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .history-timestamp {
+            color: #999;
+            font-size: 0.85em;
+            margin-top: 8px;
+        }
+
+        .no-history {
+            text-align: center;
+            color: #999;
+            padding: 40px;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .history-section {
+                padding: 20px;
+            }
+
+            .history-quote {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📜 Quote History</h1>
+
+        <div class="history-section">
+            <a href="/" class="back-button">← Back to Generator</a>
+
+            {% if history %}
+                <ul class="history-list">
+                    {% for quote in history %}
+                        <li class="history-item">
+                            <p class="history-quote">"{{ quote.content }}"</p>
+                            <p class="history-author">{{ quote.author }}</p>
+                            <p class="history-timestamp">{{ quote.timestamp }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="no-history">No quotes in history yet. Go back and get some quotes!</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
