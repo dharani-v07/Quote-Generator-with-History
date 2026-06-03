@@ -198,5 +198,3 @@ Try modifying the code to learn more:
 This project is open source and available for educational purposes.
 
 ---
-
-Happy coding! 🎉
